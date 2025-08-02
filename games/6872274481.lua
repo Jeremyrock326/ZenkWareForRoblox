@@ -8490,4 +8490,24 @@ run(function()
 		List = WinEffectName
 	})
 end)
-	
+run(function()
+    MotionBlur = vape.Categories.Utility:CreateModule({
+        Name = 'MotionBlur',
+        Function = function(callback)
+            local lighting = game:GetService("Lighting")
+            if callback then
+                if not lighting:FindFirstChild("MotionBlur") then
+                    local blur = Instance.new("BlurEffect")
+                    blur.Name = "MotionBlur"
+                    blur.Size = 5
+                    blur.Parent = lighting
+                end
+            else
+                local existing = lighting:FindFirstChild("MotionBlur")
+                if existing then
+                    existing:Destroy()
+                end
+            end
+        end
+    })
+end)
